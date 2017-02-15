@@ -1,0 +1,246 @@
+hello.c
+
+#include <stdio.h>
+
+int main(void)
+{
+   printf("Hello, world!\n");
+}  
+
+
+water.c
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int Minutes;
+    while(true) {
+        printf("Minutes: ");
+        Minutes = get_int();
+        if (Minutes > 0) {break;}
+        printf("Enter a positive Integer\n");
+    }
+    
+    printf("Bottles: %i\n", Minutes*12);
+}
+
+
+mario.c
+
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void) {
+    
+    int Height;
+    do {
+         Height = get_int();
+         }  
+    while (Height  < 0 || Height > 23);
+    
+    int x = 2;
+    
+    
+    while(Height > 0) {
+        
+        int y = Height - 1;
+        int z = x;
+         while(y >0) {
+             printf(" ");
+             y = y-1;
+         }
+         
+         
+         while(z > 0) {
+             printf("#");
+             z = z-1;
+         }
+         
+         printf("\n");
+         
+         Height = Height - 1;
+         x = x+1;
+    }
+}
+
+
+
+mario2.c
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void) {
+    
+    int Height;
+    do {
+         Height = get_int();
+         }  
+    while (Height  < 0 || Height > 23);
+    
+    int x = 2;
+    
+    
+    while(Height > 0) {
+        
+        int y1 = Height - 1;
+        int y2 = Height - 1;
+        int z = x;
+         
+             
+        while(y1 >0) {
+             printf(" ");
+             y1 = y1-1;
+            }
+        
+        while(z > x/2) {
+             
+             printf("#");
+             z = z-1;
+            }
+             
+             
+        printf(" ");
+             
+          
+        while(z > 0) {
+              
+              printf("#");
+              z = z-1;
+             }
+         
+         
+         while(y2 >0) {
+             printf(" ");
+             y2 = y2-1;
+            }
+        
+         
+         printf("\n");
+         Height = Height - 1;
+         x = x+2;
+    }
+}
+
+
+greedy.c
+
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void) {
+    
+    printf("O hai! How much change is owed?\n");
+    int n = 0;
+    float Change;
+    do {
+         Change = get_float();
+         }  
+    while (Change < 0 );
+    
+    Change = Change*100;
+    
+    while(Change > 25) {
+        Change = Change - 25;
+        n = n+1;
+    }
+    
+    while(Change > 10) {
+        Change = Change - 10;
+        n = n+1;
+    }
+    
+    while(Change > 5) {
+        Change = Change - 5;
+        n = n+1;
+    }
+    
+    while(Change > 0) {
+        Change = Change - 1;
+        n = n+1;
+    }
+    
+    printf("%i\n", n);
+    
+    
+}
+
+
+
+credit.c
+
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void) {
+    
+    printf("Number: ");
+    
+    long Number;
+    int Number_first;
+    int Number_second;
+    
+    do {
+         Number = get_long_long();
+         }  
+    while (Number < 0 );
+    
+    int even = 0;
+    int odd = 0;
+    int track = 0;
+    
+    while (Number != 0) {
+        
+        int n = Number % 10;
+        track = track +1;
+        
+        if (track%2 != 0) {
+            odd = n + odd;
+        } else {
+            even = even + (n*2 % 10 + (n*2 - (n*2 % 10))/10);
+        }
+        
+        Number_first = Number;
+        if(Number_first % 10 != Number_first) {
+            Number_second = Number_first;
+        }
+        Number = (Number - n)/10;
+        
+    }
+    
+    printf("%i, %i, %i,%i\n", track,even, odd, even+odd);
+    
+    if ((even + odd)%10 == 0) {
+         
+        if ((track == 15) && (Number_second == 34 || Number_second == 37)) {
+            
+            printf("AMEX\n");
+            
+        } else if ((track == 16) && (Number_second == 51 || Number_second == 52 ||
+                     Number_second == 53 || Number_second == 54 || Number_second == 55)) {
+                        
+                        printf("MasterCard\n") ;
+                        
+                    } else if ((track == 13 || track == 16) && (Number_first == 4)) {
+                        
+                        printf("Visa\n");
+                        
+                    } else {
+                        
+                        printf("INVALID\n");
+                        
+                    }        
+         
+        
+    } else {
+        
+        printf("INVALID\n");
+        
+    }
+        
+ }
+    
+    
+    
+    
